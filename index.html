@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,31 @@ content="width=device-width, initial-scale=1.0">
 A Pessoa que me Transborda
 </title>
 
+<!-- FONTES -->
+
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Poppins:wght@300;400&display=swap"
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Poppins:wght@300;400;500&display=swap"
 rel="stylesheet">
+
+<!-- PAGE FLIP -->
 
 <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.css"/>
 
-<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js">
+</script>
 
 <style>
+
+/* =======================
+RESET
+======================= */
 
 *{
 margin:0;
@@ -29,55 +43,146 @@ padding:0;
 box-sizing:border-box;
 }
 
-body{
-background:
-linear-gradient(to bottom,
-#fffdfb,
-#f7f1ec);
-
-font-family:'Poppins',sans-serif;
+html,body{
+width:100%;
+height:100%;
 overflow:hidden;
 }
 
-/* brilho suave */
+/* =======================
+FUNDO PREMIUM
+======================= */
 
-.light{
-position:fixed;
-width:400px;
-height:400px;
+body{
+
 background:
-radial-gradient(circle,
-rgba(255,255,255,.35),
-transparent 70%);
+linear-gradient(
+to bottom,
+#fffdfb,
+#f7f0eb,
+#f3ece8
+);
 
-top:-100px;
-right:-120px;
+font-family:
+'Poppins',
+sans-serif;
 
-animation:float 10s infinite ease-in-out;
-pointer-events:none;
-z-index:0;
+position:relative;
 }
 
-@keyframes float{
+/* brilho */
+
+.light{
+
+position:fixed;
+
+width:500px;
+height:500px;
+
+background:
+radial-gradient(
+circle,
+rgba(255,255,255,.45),
+transparent 70%
+);
+
+filter:blur(20px);
+
+pointer-events:none;
+z-index:0;
+
+animation:
+floatLight 12s infinite ease-in-out;
+}
+
+.light.one{
+top:-120px;
+right:-150px;
+}
+
+.light.two{
+bottom:-150px;
+left:-120px;
+animation-delay:4s;
+}
+
+@keyframes floatLight{
 
 0%{
-transform:translateY(0);
+transform:
+translateY(0)
+translateX(0);
 }
 
 50%{
-transform:translateY(40px);
+transform:
+translateY(40px)
+translateX(20px);
 }
 
 100%{
-transform:translateY(0);
+transform:
+translateY(0)
+translateX(0);
 }
 
 }
+
+/* partículas */
+
+.particles{
+
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:0;
+overflow:hidden;
+}
+
+.heart{
+
+position:absolute;
+font-size:12px;
+opacity:.15;
+animation:
+floatHearts linear infinite;
+}
+
+@keyframes floatHearts{
+
+from{
+transform:
+translateY(100vh);
+opacity:0;
+}
+
+30%{
+opacity:.12;
+}
+
+to{
+transform:
+translateY(-120vh);
+opacity:0;
+}
+
+}
+
+/* =======================
+LIVRO
+======================= */
 
 #book{
+
 width:100vw;
 height:100vh;
+position:relative;
+z-index:2;
 }
+
+/* =======================
+PÁGINAS
+======================= */
 
 .page{
 
@@ -85,10 +190,12 @@ background:
 linear-gradient(
 to bottom,
 #fffdfb,
-#f8f1eb
+#f9f2ec
 );
 
-padding:45px 30px;
+padding:
+60px
+40px;
 
 display:flex;
 flex-direction:column;
@@ -97,7 +204,15 @@ justify-content:center;
 overflow-y:auto;
 
 color:#5f4b4b;
+
+box-shadow:
+inset 0 0 40px rgba(0,0,0,.03);
+
 }
+
+/* =======================
+TIPOGRAFIA
+======================= */
 
 h1,h2{
 
@@ -105,85 +220,216 @@ font-family:
 'Cormorant Garamond',
 serif;
 
-color:#8a6a5c;
+color:#8d6b5b;
 text-align:center;
 }
 
 h1{
-font-size:3rem;
+font-size:3.2rem;
+line-height:1.1;
 }
 
 h2{
-font-size:2.2rem;
+font-size:2.4rem;
 margin-bottom:30px;
 }
 
 .subtitle{
+
 text-align:center;
-margin-top:10px;
-color:#a38b7f;
+font-size:1rem;
+margin-top:15px;
+color:#a88d7f;
 }
 
 .quote{
 
 font-style:italic;
 text-align:center;
+
 font-size:1.4rem;
+
 line-height:2;
-
-margin:30px 0;
-}
-
-.page img{
-
-width:100%;
-border-radius:25px;
-
-margin:25px 0;
-
-box-shadow:
-0 15px 35px rgba(0,0,0,.08);
+color:#7f6660;
 }
 
 .text{
 
-line-height:2;
 font-size:1rem;
+line-height:2.1;
+
+margin-bottom:20px;
+
+text-align:justify;
+}
+
+.highlight{
+
+font-family:
+'Cormorant Garamond',
+serif;
+
+font-size:1.8rem;
+font-style:italic;
+
+text-align:center;
+
+line-height:1.7;
+
+color:#8d6b5b;
+
+margin:
+25px
+0;
 }
 
 .center{
 text-align:center;
 }
 
-.highlight{
+/* =======================
+IMAGENS
+======================= */
 
-font-style:italic;
-font-size:1.25rem;
-color:#8a6a5c;
-text-align:center;
+.page img{
 
-margin:30px 0;
+width:100%;
+
+border-radius:30px;
+
+margin:
+25px 0;
+
+object-fit:cover;
+
+box-shadow:
+0 18px 40px
+rgba(0,0,0,.12);
+
+transition:.8s;
+
+animation:
+fadeImage 1.5s ease;
 }
+
+.page img:hover{
+
+transform:
+scale(1.02);
+}
+
+@keyframes fadeImage{
+
+from{
+opacity:0;
+transform:scale(.96);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+/* =======================
+BOTÃO
+======================= */
 
 .btn{
 
-padding:18px;
-
 border:none;
-border-radius:50px;
+outline:none;
 
-background:#ead8cd;
+padding:
+18px 28px;
+
+border-radius:50px;
 
 font-size:1rem;
 
 cursor:pointer;
+
+background:
+linear-gradient(
+to right,
+#ead8cd,
+#e5cec2
+);
+
+color:#5f4b4b;
+
+transition:.3s;
+
+margin-top:20px;
 }
 
-.page-number{
+.btn:hover{
 
-margin-top:35px;
-text-align:center;
-color:#b49d90;
+transform:
+translateY(-2px);
+
+box-shadow:
+0 10px 25px
+rgba(0,0,0,.12);
+}
+
+/* =======================
+PÁGINA FINAL
+======================= */
+
+.final-heart{
+
+font-size:4rem;
+margin-top:20px;
+
+animation:
+pulse 2s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.1);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+/* =======================
+MOBILE
+======================= */
+
+@media(max-width:768px){
+
+.page{
+padding:35px 25px;
+}
+
+h1{
+font-size:2.4rem;
+}
+
+h2{
+font-size:2rem;
+}
+
+.highlight{
+font-size:1.5rem;
+}
+
+.text{
+font-size:.96rem;
+line-height:1.9;
+}
+
 }
 
 </style>
@@ -192,20 +438,35 @@ color:#b49d90;
 
 <body>
 
-<div class="light"></div>
+<!-- LUZES -->
+
+<div class="light one"></div>
+<div class="light two"></div>
+
+<!-- PARTÍCULAS -->
+
+<div class="particles" id="particles"></div>
+
+<!-- ÁUDIO -->
 
 <audio id="musica" loop>
+
 <source src="futil.mp3"
 type="audio/mp3">
+
 </audio>
+
+<!-- LIVRO -->
 
 <div id="book">
 
+    <!-- ========================= -->
 <!-- CAPA -->
+<!-- ========================= -->
 
-<div class="page">
+<div class="page center">
 
-<img src="foto-capa.jpg">
+<img src="foto-capa.jpeg">
 
 <h1>
 A Pessoa que me Transborda
@@ -219,7 +480,7 @@ Para o meu docinho azedo ❤️‍🩹
 
 <!-- FRASE -->
 
-<div class="page">
+<div class="page center">
 
 <p class="quote">
 
@@ -233,11 +494,74 @@ dentro dela.”
 
 </div>
 
-<!-- ========================= -->
-<!-- CAPÍTULO 1 PREMIUM -->
-<!-- ========================= -->
+<!-- ABRIR LIVRO -->
 
-<!-- DATA CINEMATOGRÁFICA -->
+<div class="page center">
+
+<h2>
+Antes de começar...
+</h2>
+
+<p class="text center">
+Existe amor que passa.
+</p>
+
+<p class="text center">
+E existe amor que permanece.
+</p>
+
+<button class="btn"
+onclick="abrirLivro()">
+
+Abrir nossa história 🎵
+
+</button>
+
+</div>
+
+<!-- SUMÁRIO -->
+
+<div class="page">
+
+<h2>
+Sumário
+</h2>
+
+<p class="text">
+
+<b>Prólogo</b><br>
+Quando alguém deixa de passar
+e começa a transbordar.
+
+<br><br>
+
+<b>Capítulo 1</b><br>
+O Efeito Borboleta
+do Começo de Ano
+
+<br><br>
+
+<b>Capítulo 2</b><br>
+Entre Cartas de Despedida
+e Noites em Claro
+
+<br><br>
+
+<b>Capítulo 3</b><br>
+O Amor Que Ainda Transborda
+
+<br><br>
+
+<b>Epílogo</b><br>
+Volta comigo?
+
+</p>
+
+</div>
+
+<!-- ========================= -->
+<!-- CAPÍTULO 1 -->
+<!-- ========================= -->
 
 <div class="page center">
 
@@ -246,13 +570,13 @@ dentro dela.”
 </h2>
 
 <p class="highlight">
+
 O dia em que
 ela cruzou a porta.
+
 </p>
 
 </div>
-
-<!-- COMEÇO -->
 
 <div class="page">
 
@@ -261,13 +585,15 @@ Capítulo 1
 </h2>
 
 <p class="highlight">
+
 O Efeito Borboleta
 do Começo de Ano
+
 </p>
 
 <p class="text">
 Esta é a história
-do meu <b>docinho azedo</b>
+do meu docinho azedo
 chamado
 Maria Clara Vasconcellos.
 </p>
@@ -275,15 +601,8 @@ Maria Clara Vasconcellos.
 <p class="text">
 Eu sempre acreditei
 que algumas preces
-são ouvidas em silêncio,
-nos cantos mais profundos
-da mente.
-</p>
-
-<p class="text">
-Naquele início de ano letivo
-no IMP,
-o meu pedido era simples:
+são ouvidas
+em silêncio.
 </p>
 
 <p class="highlight">
@@ -295,195 +614,101 @@ me manda alguém.”
 
 </div>
 
-<!-- FOTO 1 -->
-
 <div class="page">
 
-<!-- FOTO DELA SORRINDO -->
 <img src="foto1.jpg">
 
 <p class="text">
 Uma pessoa
-que tivesse a mesma vibe que eu...
-ou alguém capaz
-de balançar completamente
+que tivesse
+a mesma vibe que eu.
+</p>
+
+<p class="text">
+Ou alguém
+capaz de mudar
 as minhas estruturas.
 </p>
 
 <p class="text">
 Eu só não imaginava
-que a resposta chegaria
+que a resposta
+chegaria
 com nome,
 sobrenome,
-uma doçura única
+doçura
 e um gênio difícil.
 </p>
 
 </div>
 
-<!-- PRIMEIRO OLHAR -->
-
 <div class="page">
 
 <p class="text">
 No começo,
-eu apenas olhava de longe.
+eu só olhava
+de longe.
 </p>
 
 <p class="text">
-Aquela timidez clássica
-travando qualquer comando
-do meu cérebro
-para levantar da cadeira.
+Aquela timidez
+travando qualquer reação.
 </p>
 
 <p class="highlight">
 
-“Será que realmente
-dá certo?”
-
-</p>
-
-<p class="text">
-Mas quanto mais eu reparava nela,
-mais eu percebia
-uma beleza diferente.
-</p>
-
-<p class="text">
-Uma aura
-que me puxava.
-</p>
-
-</div>
-
-<!-- INSTAGRAM -->
-
-<div class="page">
-
-<p class="highlight">
-O plano inicial?
-</p>
-
-<p class="text">
-O clássico
-da nossa geração:
-</p>
-
-<p class="highlight">
-Stalkear no Instagram.
-</p>
-
-<p class="text">
-Resultado?
-Nada.
-</p>
-
-<p class="text">
-Nenhuma pista.
-Nenhuma abertura.
-</p>
-
-<p class="text">
-E o fantasma da vergonha
-me perseguindo:
-</p>
-
-<p class="highlight">
-
-“Afinal...
-eu era só mais um rosto
-no fundo da sala.”
+“Será
+que isso dá certo?”
 
 </p>
 
 </div>
 
-<!-- WHATSAPP -->
-
 <div class="page">
 
-<!-- FOTO DOS DOIS -->
 <img src="foto2.jpg">
 
 <p class="text">
-Até que o destino
-resolveu dar
-um empurrãozinho.
-</p>
-
-<p class="text">
-Em um dia qualquer,
-alguém jogou
-o contato dela
+Até que alguém
+mandou o contato dela
 no grupo do WhatsApp.
 </p>
 
 <p class="text">
-Eu vi a notificação
-na mesma hora.
-</p>
-
-<p class="highlight">
-
 Meu coração disparou.
-
-</p>
-
-<p class="text">
-Sem pensar muito,
-eu mandei mensagem.
-</p>
-
-<p class="text">
-E foi ali...
-que o nosso cronômetro
-começou a rodar.
-</p>
-
-</div>
-
-<!-- INSTAGRAM + TIKTOK -->
-
-<div class="page">
-
-<p class="text">
-Com o número em mãos,
-eu achei o Instagram real.
-</p>
-
-<p class="text">
-E decidi:
-não seria apenas
-mais um seguidor fantasma.
-</p>
-
-<p class="text">
-Quando ela abriu
-uma caixinha de perguntas,
-eu mandei
-a pergunta mais idiota
-e clichê do planeta:
 </p>
 
 <p class="highlight">
 
-“Quantos anos você tem?”
+Foi ali
+que o nosso cronômetro
+começou.
 
-</p>
-
-<p class="text">
-E por incrível que pareça...
-funcionou.
 </p>
 
 </div>
 
-<!-- CHOCOLATE -->
+<div class="page">
+
+<p class="text">
+Eu achei
+o Instagram real.
+</p>
+
+<p class="text">
+Acompanhei stories.
+Achei TikTok.
+Descobri gostos.
+</p>
+
+<p class="text">
+Até o chocolate favorito.
+</p>
+
+</div>
 
 <div class="page">
 
-<!-- FOTO ROMÂNTICA -->
 <img src="foto3.jpg">
 
 <h2>
@@ -491,44 +716,33 @@ O dia do chocolate 🍫
 </h2>
 
 <p class="text">
-Em uma conversa qualquer,
-Maria Clara comentou
-que estava morrendo
-de vontade
-de comer um doce.
+Ela comentou
+que queria doce.
 </p>
 
 <p class="text">
 No outro dia,
 eu acordei cedo
-e fui atrás
-do chocolate favorito dela.
+e fui atrás.
 </p>
 
 <p class="text">
-Não achei o exato.
-</p>
-
-<p class="text">
-Frustrado,
-comprei um parecido.
+Não encontrei o exato.
+Comprei um parecido.
 </p>
 
 <p class="highlight">
 
 Torcendo
-para que a intenção
-valesse a pena.
+para a intenção
+valer a pena.
 
 </p>
 
 </div>
 
-<!-- GRANDE BEIJO -->
-
 <div class="page center">
 
-<!-- FOTO MAIS APAIXONADA -->
 <img src="foto4.jpg">
 
 <h2>
@@ -541,161 +755,77 @@ O grande beijo.
 
 </p>
 
-<p class="text">
-O mundo ao redor
-silenciou.
-</p>
-
-<p class="text">
-Tudo saiu
-melhor do que
-eu imaginava.
+<p class="text center">
+O mundo silenciou.
 </p>
 
 </div>
 
-<!-- FELICIDADE -->
-
 <div class="page">
 
 <p class="text">
-Os dias que vieram depois
+Os dias seguintes
 foram
 os melhores
 da minha vida.
 </p>
 
 <p class="text">
-Eu me sentia vivendo
+Parecia
+que eu vivia
 um livrinho.
 </p>
 
 <p class="text">
-Como se cada detalhe
+Cada detalhe
 do meu dia
-fosse escrito
-e dedicado a ela.
-</p>
-
-<p class="highlight">
-
-Mas o medo começou
-a aparecer.
-
-</p>
-
-<p class="text">
-O medo
-de ser intenso demais.
+era dedicado a ela.
 </p>
 
 </div>
 
-<!-- SITE -->
-
 <div class="page">
 
 <p class="text">
-Antes mesmo
-do aniversário dela,
-eu já estava criando
-um mini site secreto.
+Antes do aniversário,
+eu já criava
+um site secreto
+para ela.
 </p>
 
 <p class="text">
-Uma homenagem digital,
-detalhe por detalhe,
+Uma homenagem
 sobre o quanto
-ela era incrível
-aos meus olhos.
-</p>
-
-<p class="text">
-O plano era entregar
-no aniversário.
-</p>
-
-<p class="highlight">
-
-Mas a nossa química
-foi mais rápida.
-
-</p>
-
-<p class="text">
-E eu entreguei antes.
+ela era incrível.
 </p>
 
 </div>
 
-<!-- BRIGA -->
-
 <div class="page">
 
 <p class="text">
-Mas nem todo amor
-vive só de calmaria.
+Mas vieram
+as tempestades.
 </p>
 
 <p class="text">
-Veio a pior briga.
-</p>
-
-<p class="text">
-Daquelas
-que quebram o peito.
-</p>
-
-<p class="text">
-Eu chorei muito.
+Brigas.
+Medos.
+Choros.
 </p>
 
 <p class="highlight">
 
 Com medo
-de que o sonho
-tivesse acabado.
+de perder
+o nosso sonho.
 
 </p>
 
 </div>
 
-<!-- PRIMEIRA VEZ -->
-
 <div class="page">
 
-<p class="text">
-Mas no dia seguinte...
-veio o sol.
-</p>
-
-<p class="text">
-E a nossa reconciliação.
-</p>
-
-<p class="text">
-Da melhor forma possível.
-</p>
-
-<p class="highlight">
-
-A nossa primeira vez.
-
-</p>
-
-<p class="text">
-Um momento
-que selou
-a nossa paz.
-</p>
-
-</div>
-
-<!-- FINAL CAP 1 -->
-
-<div class="page">
-
-<!-- FOTO DEITADOS -->
 <img src="foto5.jpg">
 
 <p class="highlight">
@@ -707,25 +837,10 @@ essa garota bem.
 
 </p>
 
-<p class="text">
-E enquanto ela lutava
-contra os próprios demônios,
-uma certeza
-crescia no meu peito:
-</p>
-
-<p class="highlight">
-
-Eu jamais
-queria largar
-a mão dela.
-
-</p>
-
 </div>
 
 <!-- ========================= -->
-<!-- CAPÍTULO 2 PREMIUM -->
+<!-- CAPÍTULO 2 -->
 <!-- ========================= -->
 
 <div class="page center">
@@ -735,200 +850,85 @@ Capítulo 2
 </h2>
 
 <p class="highlight">
-Entre Cartas de Despedida
+
+Entre Cartas
+de Despedida
 e Noites em Claro
+
 </p>
 
 </div>
 
-<!-- DOR DELA -->
-
 <div class="page">
 
-<!-- FOTO DELICADA DELA -->
 <img src="foto6.jpg">
 
 <p class="text">
-A vida da Maria Clara
+A vida dela
 nunca foi fácil.
 </p>
 
 <p class="text">
-Desde muito nova,
-ela carregava
-feridas profundas.
-</p>
-
-<p class="text">
+Feridas profundas.
 Dores silenciosas.
-Problemas pessoais.
-Tempestades
-que ninguém conseguia ver
-por completo.
+Tempestades internas.
 </p>
 
 <p class="highlight">
 
-E ver ela sofrendo...
-
+E ver ela sofrendo
 acabava comigo.
 
 </p>
 
 </div>
 
-<!-- MEDO -->
-
 <div class="page">
 
 <p class="text">
-Eu daria
-a minha vida
-pela dela
-sem pensar
-duas vezes.
+Eu ligava
+cada pontinho.
 </p>
 
 <p class="text">
-A Clara postava coisas.
-Fazia cartas.
-Dava sinais
-que quase ninguém percebia.
-</p>
-
-<p class="text">
-Mas quem ama
-desenvolve
-um sexto sentido.
+Cartas.
+Silêncios.
+Mudanças.
 </p>
 
 <p class="highlight">
 
-Eu ligava
-cada pontinho.
+Quem ama
+desenvolve
+um sexto sentido.
 
 </p>
 
 </div>
 
-<!-- NOITES EM CLARO -->
-
 <div class="page">
 
-<!-- FOTO ABRAÇADOS -->
 <img src="foto7.jpg">
 
 <p class="text">
-Eu passei
-noites inteiras
-em claro.
+Passei noites
+inteiras em claro.
 </p>
 
 <p class="text">
-O teto do quarto
-virou testemunha
-do meu desespero.
-</p>
-
-<p class="text">
-Eu amava ela
-como nunca amei ninguém.
+Com medo.
+Muito medo.
 </p>
 
 <p class="highlight">
 
-E meu maior medo
-tinha nome:
+Meu maior medo?
 
-perdê-la.
-
-</p>
-
-</div>
-
-<!-- PORTO SEGURO -->
-
-<div class="page center">
-
-<p class="highlight">
-
-Ela era
-o meu porto seguro.
-
-</p>
-
-<p class="text">
-A pessoa
-que transformava
-o meu mundo cinza
-em cor.
-</p>
-
-</div>
-
-<!-- CARTAS -->
-
-<div class="page">
-
-<h2>
-Até que aconteceu.
-</h2>
-
-<p class="text">
-O dia
-que eu mais temia
-chegou.
-</p>
-
-<p class="text">
-As cartas
-de despedida
-vieram parar
-nas minhas mãos.
-</p>
-
-<p class="highlight">
-
-E naquele instante...
-
-eu desmoronei.
+Perdê-la.
 
 </p>
 
 </div>
-
-<!-- CORRIDA -->
-
-<div class="page">
-
-<p class="text">
-Meu chão sumiu.
-</p>
-
-<p class="text">
-Eu saí correndo.
-</p>
-
-<p class="text">
-Desesperado.
-Sem pensar.
-</p>
-
-<p class="text">
-Com medo
-de chegar tarde demais.
-</p>
-
-<p class="highlight">
-
-Meu coração
-batia na garganta.
-
-</p>
-
-</div>
-
-<!-- DATA FORTE -->
 
 <div class="page center">
 
@@ -942,63 +942,41 @@ batia na garganta.
 
 </p>
 
-<p class="text">
+<p class="text center">
 O minuto
 que mudou
-a minha vida
-para sempre.
+a minha vida.
 </p>
 
 </div>
 
-<!-- VIGIA -->
+<div class="page">
+
+<p class="text">
+As cartas
+vieram parar
+nas minhas mãos.
+</p>
+
+<p class="highlight">
+
+Eu desmoronei.
+
+</p>
+
+<p class="text">
+Saí correndo.
+Desesperado.
+</p>
+
+</div>
 
 <div class="page">
 
 <p class="text">
 Depois daquele dia,
-alguma coisa
-mudou em mim.
-</p>
-
-<p class="text">
-Minha atenção
-redobrou.
-</p>
-
-<p class="text">
-Eu virei
-um vigia
-do bem-estar dela.
-</p>
-
-<p class="highlight">
-
-Todos os dias
-eu rezava
-por ela.
-
-</p>
-
-</div>
-
-<!-- FÉ -->
-
-<div class="page center">
-
-<p class="highlight">
-
-Em todas
-as missas.
-
-Sem falhar.
-
-</p>
-
-<p class="text">
-Eu fazia
-sempre
-o mesmo pedido:
+eu rezei
+todos os dias.
 </p>
 
 <p class="highlight">
@@ -1010,75 +988,36 @@ protege ela.”
 
 </div>
 
-<!-- OVERDOSE -->
-
 <div class="page">
 
-<!-- FOTO INTIMISTA -->
 <img src="foto8.jpg">
 
 <p class="text">
-Então veio
-o episódio
-da overdose.
+Veio a overdose.
+Veio o hospital.
+Veio o medo.
 </p>
 
 <p class="text">
-Depois...
-a internação.
-</p>
-
-<p class="text">
-Mesmo no hospital,
-eu precisava
+E eu precisava
 saber dela
 24 horas por dia.
 </p>
 
-<p class="highlight">
-
-Porque amar ela
-era também
-ter medo.
-
-</p>
-
 </div>
-
-<!-- A PIOR CAGADA -->
 
 <div class="page">
 
-<h2>
-A maior cagada
-da minha vida.
-</h2>
-
-<p class="text">
-No meio
-de todo o caos...
-</p>
-
-<p class="text">
-eu larguei a Clara.
-</p>
-
-<p class="text">
-Por impulso.
-Por medo.
-Por confusão.
-</p>
-
 <p class="highlight">
 
-E me arrependo
-todos os dias.
+A maior cagada
+da minha vida?
+
+Eu larguei a Clara.
 
 </p>
 
 </div>
-
-<!-- TRANBORDA -->
 
 <div class="page center">
 
@@ -1092,29 +1031,107 @@ em mim.
 
 </p>
 
-<p class="text">
-Da forma
-mais pura
-e intensa
-possível.
+</div>
+
+<!-- ========================= -->
+<!-- CAPÍTULO 3 -->
+<!-- ========================= -->
+
+<div class="page center">
+
+<h2>
+Capítulo 3
+</h2>
+
+<p class="highlight">
+
+O Amor
+Que Ainda Transborda
+
 </p>
 
 </div>
 
-<!-- FINAL CAP 2 -->
+<div class="page">
+
+<p class="text">
+A verdade?
+</p>
+
+<p class="text">
+Eu ainda penso
+em nós.
+</p>
+
+<p class="highlight">
+
+Você ainda mora
+em mim.
+
+</p>
+
+</div>
+
+<div class="page center">
+
+<p class="highlight">
+
+Eu me apaixonei
+antes do beijo.
+
+</p>
+
+</div>
+
+<div class="page">
+
+<img src="foto9.jpg">
+
+<p class="text">
+Pela sua alma.
+Sua voz.
+Seu jeito doidinho.
+</p>
+
+<p class="text">
+Seu abraço
+virou paz.
+</p>
+
+</div>
+
+<div class="page center">
+
+<p class="highlight">
+
+Saudade
+do teu cheirinho
+de baunilha.
+
+</p>
+
+</div>
+
+<div class="page">
+
+<img src="foto10.jpg">
+
+<p class="highlight">
+
+Eu sou
+completamente
+refém
+do teu sorriso.
+
+</p>
+
+</div>
 
 <div class="page">
 
 <p class="text">
 Mesmo depois
 de tudo...
-</p>
-
-<p class="text">
-do medo,
-das brigas,
-da saudade,
-dos erros...
 </p>
 
 <p class="highlight">
@@ -1124,10 +1141,328 @@ nunca foi embora.
 
 </p>
 
+</div>
+
+<div class="page">
+
+<img src="foto11.jpg">
+
 <p class="text">
-Porque amar você
-nunca foi
-algo pequeno.
+Obrigado
+por tudo,
+meu docinho azedo.
 </p>
 
 </div>
+
+<div class="page center">
+
+🌹
+
+<p class="highlight">
+
+Essas flores
+são suas.
+
+</p>
+
+<p class="text center">
+Porque você
+foi a primeira
+mulher
+que amei
+de verdade.
+</p>
+
+</div>
+
+<div class="page center">
+
+<h2>
+Volta comigo?
+❤️‍🩹
+</h2>
+
+<p class="quote">
+
+Eu prometo
+cuidar de você.
+
+Nunca mais
+soltar
+a tua mão.
+
+</p>
+
+</div>
+
+<div class="page center">
+
+<h1>
+A Pessoa
+que me Transborda
+</h1>
+
+<p class="subtitle">
+
+Com todo amor
+que existe aqui,
+
+para o meu
+docinho azedo.
+
+❤️‍🩹
+
+</p>
+
+<div class="final-heart">
+❤️
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- JAVASCRIPT PREMIUM -->
+<!-- ========================= -->
+
+<script>
+
+/* =========================
+MÚSICA
+========================= */
+
+function abrirLivro(){
+
+const musica =
+document.getElementById(
+"musica"
+);
+
+musica.volume = 0.22;
+
+musica.play()
+.catch(() => {
+console.log(
+"Autoplay bloqueado"
+);
+});
+
+}
+
+/* =========================
+PARTÍCULAS ROMÂNTICAS
+========================= */
+
+const particles =
+document.getElementById(
+"particles"
+);
+
+function createHeart(){
+
+const heart =
+document.createElement(
+"div"
+);
+
+heart.classList.add(
+"heart"
+);
+
+heart.innerHTML =
+"🤍";
+
+heart.style.left =
+Math.random()*100+"vw";
+
+heart.style.animationDuration =
+(Math.random()*8+8)
++"s";
+
+heart.style.fontSize =
+(Math.random()*10+10)
++"px";
+
+particles.appendChild(
+heart
+);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},16000);
+
+}
+
+setInterval(
+createHeart,
+600
+);
+
+/* =========================
+LIVRO REAL
+========================= */
+
+const pageFlip =
+new St.PageFlip(
+
+document.getElementById(
+"book"
+),
+
+{
+width:430,
+height:720,
+
+size:"stretch",
+
+minWidth:320,
+maxWidth:1200,
+
+minHeight:450,
+maxHeight:1600,
+
+showCover:true,
+
+mobileScrollSupport:true,
+
+swipeDistance:30,
+
+drawShadow:true,
+
+maxShadowOpacity:.28,
+
+flippingTime:900,
+
+useMouseEvents:true,
+
+startPage:0,
+
+showPageCorners:true,
+
+disableFlipByClick:false
+}
+
+);
+
+pageFlip.loadFromHTML(
+document.querySelectorAll(
+".page"
+)
+);
+
+/* =========================
+EFEITO VIRADA
+========================= */
+
+pageFlip.on(
+"flip",
+() => {
+
+navigator.vibrate?.(
+15
+);
+
+}
+);
+
+/* =========================
+AUTO PLAY SUAVE
+========================= */
+
+document.body.addEventListener(
+"click",
+() => {
+
+const musica =
+document.getElementById(
+"musica"
+);
+
+if(musica.paused){
+
+musica.volume = 0.22;
+
+musica.play()
+.catch(()=>{});
+
+}
+
+},
+{once:true}
+);
+
+/* =========================
+FADE NAS PÁGINAS
+========================= */
+
+const pages =
+document.querySelectorAll(
+".page"
+);
+
+pages.forEach(page=>{
+
+page.style.opacity="0";
+
+});
+
+setTimeout(()=>{
+
+pages.forEach(page=>{
+
+page.style.transition=
+"opacity 1.2s ease";
+
+page.style.opacity=
+"1";
+
+});
+
+},500);
+
+/* =========================
+EFEITO NAS IMAGENS
+========================= */
+
+document
+.querySelectorAll(
+".page img"
+)
+.forEach(img=>{
+
+img.addEventListener(
+"mouseover",
+()=>{
+
+img.style.transform =
+"scale(1.03)";
+
+});
+
+img.addEventListener(
+"mouseout",
+()=>{
+
+img.style.transform =
+"scale(1)";
+
+});
+
+});
+
+/* =========================
+MENSAGEM FINAL
+========================= */
+
+console.log(
+"Livro carregado ❤️‍🩹"
+);
+
+</script>
+
+</body>
+</html>
